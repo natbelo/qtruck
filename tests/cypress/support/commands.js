@@ -45,3 +45,21 @@ Cypress.Commands.add('login', (user)=>{
         .should('have.text', `Olá, ${nome}`)
   
   })
+
+  Cypress.Commands.add('campObrigatorio', (text)=>{
+    cy.get('.swal2-html-container')
+       .should('be.visible')
+       .should('have.text', text)
+  })
+
+  Cypress.Commands.add('senhaObrigatorio', (text)=>{
+    cy.get('.swal2-html-container')
+       .should('be.visible')
+       .should('have.text', text)
+  })
+
+  Cypress.Commands.add('camposObrigatorios', (text)=>{
+    cy.get('.swal2-html-container')
+       .should('be.visible')
+       .should('have.text', text)
+  })
