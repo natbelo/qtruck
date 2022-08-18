@@ -27,8 +27,8 @@
 Cypress.Commands.add('login', (user)=>{
     cy.visit('/')
   
-    cy.get('input[name=instagram]').type(user.instagram)
-    cy.get('input[name=password]').type(user.password)
+    if (user.instagram) cy.get('input[name=instagram]').type(user.instagram)
+    if (user.password) cy.get('input[name=password]').type(user.password)
   
     cy.contains('button','Entrar').click()
   })
@@ -46,20 +46,3 @@ Cypress.Commands.add('login', (user)=>{
   
   })
 
-  Cypress.Commands.add('campObrigatorio', (text)=>{
-    cy.get('.swal2-html-container')
-       .should('be.visible')
-       .should('have.text', text)
-  })
-
-  Cypress.Commands.add('senhaObrigatorio', (text)=>{
-    cy.get('.swal2-html-container')
-       .should('be.visible')
-       .should('have.text', text)
-  })
-
-  Cypress.Commands.add('camposObrigatorios', (text)=>{
-    cy.get('.swal2-html-container')
-       .should('be.visible')
-       .should('have.text', text)
-  })
