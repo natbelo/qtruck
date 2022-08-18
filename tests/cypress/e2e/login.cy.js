@@ -1,3 +1,6 @@
+import loginPage from '../support/pages/Login'
+import mapPage from '../support/pages/Map'
+
 describe('Login', () => {
   it('logar com sucesso', () => {
 
@@ -7,9 +10,13 @@ describe('Login', () => {
       password: 'natbelo'
     }
 
-    cy.login(user)
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
 
-    cy.loggedUser(user.nome)
+    mapPage.loggedUser(user.nome)
+
+    
 
   })
 
@@ -19,9 +26,11 @@ describe('Login', () => {
       password: 'nat123'
     }
 
-    cy.login(user)
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
 
-    cy.modalHaveText('Credenciais inválidas, tente novamente!')
+    loginPage.modal.haveText('Credenciais inválidas, tente novamente!')
   })
 
   it('nao deve logar com instagram inexistente', ()=>{
@@ -30,31 +39,41 @@ describe('Login', () => {
       password: 'nat123'
     }
     
-    cy.login(user)
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
 
-    cy.modalHaveText('Credenciais inválidas, tente novamente!')
+    loginPage.modal.haveText('Credenciais inválidas, tente novamente!')
   })
 
   it('instagram é obrigatório', ()=>{
     const user = {
       password: 'nat123'
     }
-    cy.login(user)
-    cy.modalHaveText('Por favor, informe o seu código do Instagram!')
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
+
+    loginPage.modal.haveText('Por favor, informe o seu código do Instagram!')
   })
 
   it('senha é obrigatória', ()=>{
     const user = {
       instagram: 'natisbelo'
     }
-    cy.login(user)
-    cy.modalHaveText('Por favor, informe a sua senha secreta!')
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
+
+    loginPage.modal.haveText('Por favor, informe a sua senha secreta!')
   })
 
   it('todos os campos são obrigatórios', ()=>{
     
-    cy.login({})
-    cy.modalHaveText('Por favor, informe suas credenciais!')
+    loginPage.go()
+    loginPage.submit()
+
+    loginPage.modal.haveText('Por favor, informe suas credenciais!')
   })
  
 
