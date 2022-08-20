@@ -6,7 +6,7 @@ class LoginPage{
         this.modal = modal //propriedade que acessa a classe Modal
     }
 
-    //função que acessa a página del ogin
+    //função que acessa a página de login
     go() {
         cy.visit('/')
     }
