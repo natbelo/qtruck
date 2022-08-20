@@ -3,7 +3,7 @@
 <br>
 
 ## Descrição
-### Projeto desenvolvido durante treinamento intensivo de automação de testes em Cypress. 
+### Projeto desenvolvido durante treinamento intensivo de automação de testes com Cypress. 
 
 <br>
 
