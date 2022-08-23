@@ -2,10 +2,10 @@
 
 class MapPage {
     
-    loggedUser(nome) {
+    loggedUser(name) {
         cy.get('.logged-user')
         .should('be.visible')
-        .should('have.text', `Olá, ${nome}`)
+        .should('have.text', `Olá, ${name}`)
     }
 }
 

@@ -15,13 +15,14 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     env: {
-      'notifications': 'allow',
-      'geolocation': 'allow'
-    },
-    mongodb: {
+      browserPermissions: {
+        'notifications': 'allow',
+        'geolocation': 'allow'  
+      },
+      mongodb: {
       'uri':'mongodb+srv://nat:belo@cluster0.xopciiy.mongodb.net/QtruckDB?retryWrites=true&w=majority',
       'database':'QtruckDB'
     }
-
+  }
   },
 });

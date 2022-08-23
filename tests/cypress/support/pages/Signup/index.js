@@ -13,7 +13,7 @@ class SignupPage{
     
     form(user) {
 
-        if (user.nome) cy.get('input[name=name]').type(user.nome)
+        if (user.name) cy.get('input[name=name]').type(user.name)
         if (user.instagram) cy.get('input[name=instagram]').type(user.instagram)
         if (user.password) cy.get('input[name=password]').type(user.password)
     }

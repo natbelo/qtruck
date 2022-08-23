@@ -5,7 +5,7 @@ describe('Login', () => {
   it('logar com sucesso', () => {
 
     const user = {
-      nome: 'Natália',
+      name: 'Natália',
       instagram: '@natisbelo',
       password: 'natbelo'
     }

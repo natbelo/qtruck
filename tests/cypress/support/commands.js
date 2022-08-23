@@ -27,9 +27,6 @@
 // Cypress.Commands.add('login', (user)=>{
 //     cy.visit('/')
   
-//     if (user.instagram) cy.get('input[name=instagram]').type(user.instagram)
-//     if (user.password) cy.get('input[name=password]').type(user.password)
-  
 //     cy.contains('button','Entrar').click()
 //   })
   
@@ -45,4 +42,28 @@
   //       .should('have.text', `Olá, ${nome}`)
   
   // })
+
+  Cypress.Commands.add('apiResetUser', (instagram) => {
+
+    cy.request({
+        url: 'http://localhost:3333/helpers-reset',
+        method: 'DELETE',
+        qs:{ instagram: instagram}
+    }).then(response => {
+        expect(response.status).to.eql(204)
+    })
+    })
+
+    Cypress.Commands.add('apiCreateUser', (payload)=>{
+
+        cy.apiResetUser(payload.instagram)
+
+        cy.request({
+            url: 'http://localhost:3333/signup',
+            method:'POST',
+            body: payload
+        }).then(response => {
+            expect(response.status).to.eql(201)
+        })
+    })
 
